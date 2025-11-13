@@ -9,12 +9,14 @@ public class ProductsPage extends BasePage {
     private static final By CART_BADGE = By.xpath("//*[@data-test='shopping-cart-badge']");
     private static final String PRODUCT_IMG = "//img[@alt='%s']";
     private static final String PRODUCT_NAME = "//*[text()='%s']//ancestor::div[@class='inventory_item']//child::div[@data-test='inventory-item-name']";
+    public static final String PROBLEM_IMG = "https://www.saucedemo.com/static/media/sl-404.168b1cce10384b857a6f.jpg";
+    public static final By CART = By.cssSelector(".shopping_cart_link");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean checkProductsTitle() {
+    public boolean isPageOpen() {
         return driver.findElement(PRODUCTS_TITLE).isDisplayed();
     }
 
@@ -22,6 +24,11 @@ public class ProductsPage extends BasePage {
         By addToCart = By.xpath(ADD_TO_CART.formatted(goodsName));
         driver.findElement(addToCart).click();
         return driver.findElement(CART_BADGE).getText();
+    }
+
+    public void addToCart(final int index) {
+        By addToCart = By.xpath("//*[text()='Add to cart']");
+        driver.findElements(addToCart).get(index).click();
     }
 
     public String checkImage(final String goodsName) {
@@ -32,6 +39,10 @@ public class ProductsPage extends BasePage {
     public void openProductCard(final String goodsName) {
         By openProductCard = By.xpath(PRODUCT_NAME.formatted(goodsName));
         driver.findElement(openProductCard).click();
+    }
+
+    public void openCart() {
+        driver.findElement(CART).click();
     }
 }
 
