@@ -7,7 +7,6 @@ public class ProductCardPage extends BasePage {
 
     private static final String PRODUCT_DESCRIPTION = "//div[@data-test='inventory-item-desc']";
 
-
     public ProductCardPage(WebDriver driver) {
         super(driver);
     }

@@ -14,6 +14,7 @@ public class BaseTest {
     LoginPage loginPage;
     ProductsPage productsPage;
     ProductCardPage productCardPage;
+    CartPage cartPage;
 
     @BeforeMethod
     public void setUp() {
@@ -25,6 +26,7 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         productCardPage = new ProductCardPage(driver);
+        cartPage = new CartPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -32,3 +34,4 @@ public class BaseTest {
         driver.quit();
     }
 }
+

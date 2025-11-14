@@ -20,9 +20,9 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL);
     }
 
-    public void login(String userName) {
+    public void login(String userName, String password) {
         fillInLogin(userName);
-        fillInPassword();
+        fillInPassword(password);
         pressLoginBtn();
     }
 
@@ -30,8 +30,8 @@ public class LoginPage extends BasePage {
         driver.findElement(USER_NAME).sendKeys(userName);
     }
 
-    public void fillInPassword() {
-        driver.findElement(PASSWORD).sendKeys("secret_sauce");
+    public void fillInPassword(String password) {
+        driver.findElement(PASSWORD).sendKeys(password);
     }
 
     public void pressLoginBtn() {
