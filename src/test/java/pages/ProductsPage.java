@@ -11,6 +11,7 @@ public class ProductsPage extends BasePage {
     private static final String PRODUCT_NAME = "//*[text()='%s']//ancestor::div[@class='inventory_item']//child::div[@data-test='inventory-item-name']";
     public static final String PROBLEM_IMG = "https://www.saucedemo.com/static/media/sl-404.168b1cce10384b857a6f.jpg";
     public static final By CART = By.cssSelector(".shopping_cart_link");
+    private static final By ADD_TO_CART_BTN = By.xpath("//*[text()='Add to cart']");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -27,8 +28,7 @@ public class ProductsPage extends BasePage {
     }
 
     public void addToCart(final int index) {
-        By addToCart = By.xpath("//*[text()='Add to cart']");
-        driver.findElements(addToCart).get(index).click();
+        driver.findElements(ADD_TO_CART_BTN).get(index).click();
     }
 
     public String checkImage(final String goodsName) {
