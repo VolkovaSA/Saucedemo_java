@@ -21,7 +21,6 @@ public class BaseTest {
     CartPage cartPage;
 
     @Parameters({"browser"})
-
     @BeforeMethod
     public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
