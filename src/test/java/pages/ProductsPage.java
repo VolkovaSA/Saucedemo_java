@@ -45,4 +45,3 @@ public class ProductsPage extends BasePage {
         driver.findElement(CART).click();
     }
 }
-

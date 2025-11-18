@@ -8,16 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
+
+    private final By cartTitle = By.xpath("//*[@class='title']");
+    private final By itemName = By.className("inventory_item_name");
+
     public CartPage(WebDriver driver) {
         super(driver);
     }
 
     public ArrayList<String> getProductsNames() {
-        List<WebElement> allProducts = driver.findElements(By.className("inventory_item_name"));
+        List<WebElement> allProducts = driver.findElements(itemName);
         ArrayList<String> names = new ArrayList<>();
         for (WebElement product : allProducts) {
             names.add(product.getText());
         }
+
         return names;
+    }
+
+    public void waitPageLoaded() {
+        driver.findElement(cartTitle).isDisplayed();
     }
 }

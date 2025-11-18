@@ -5,12 +5,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class AddToCartTest extends BaseTest {
+    private static final String BACKPACK = "Sauce Labs Backpack";
+    private static final String ONESIE = "Sauce Labs Onesie";
+    private static final String FLEECE_JACKET = "Sauce Labs Fleece Jacket";
+
 
     @Test(description = "Проверка добавления товара в корзину")
     public void checkGoodsAdded() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        assertEquals(productsPage.addToCart("Sauce Labs Backpack"), "1");
+        assertEquals(productsPage.addToCart(BACKPACK), "1");
     }
 
     @Test(description = "Проверка добавления товара в корзину", priority = 3)
@@ -19,9 +23,10 @@ public class AddToCartTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.isPageOpen();
         productsPage.addToCart(3);
-        productsPage.addToCart("Sauce Labs Onesie");
+        productsPage.addToCart(ONESIE);
         productsPage.openCart();
-        assertTrue(cartPage.getProductsNames().contains("Sauce Labs Fleece Jacket"));
+        cartPage.waitPageLoaded();
+        assertTrue(cartPage.getProductsNames().contains(FLEECE_JACKET));
         assertFalse(cartPage.getProductsNames().isEmpty());
         assertEquals(cartPage.getProductsNames().size(), 2);
     }
