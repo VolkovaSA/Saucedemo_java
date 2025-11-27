@@ -23,6 +23,11 @@ public class ProductsPage extends BasePage {
         return driver.findElement(PRODUCTS_TITLE).isDisplayed();
     }
 
+    @Step("Проверяем заголовок страницы с товарами")
+    public String getTitleText() {
+        return driver.findElement(PRODUCTS_TITLE).getText();
+    }
+
     @Step("Получаем значение счетчика товаров в корзине")
     public String addToCart(final String goodsName) {
         By addToCart = By.xpath(ADD_TO_CART.formatted(goodsName));

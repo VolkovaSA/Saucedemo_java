@@ -10,7 +10,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
-import utilis.PropertyReader;
 import utilis.TestListener;
 
 import java.time.Duration;
@@ -22,14 +21,6 @@ public class BaseTest {
     ProductsPage productsPage;
     ProductCardPage productCardPage;
     CartPage cartPage;
-    String user;
-    String password;
-    String problemUser;
-    String glitchUser;
-    String errorUser;
-    String lockedOutUser;
-    String emptyLoginUser;
-    String emptyPasswordUser;
 
     @Parameters({"browser"})
     @BeforeMethod
@@ -52,15 +43,6 @@ public class BaseTest {
         productsPage = new ProductsPage(driver);
         productCardPage = new ProductCardPage(driver);
         cartPage = new CartPage(driver);
-
-        user = PropertyReader.getProperty("saucedemo.user");
-        problemUser = PropertyReader.getProperty("saucedemo.problem_user");
-        glitchUser = PropertyReader.getProperty("saucedemo.glitch_user");
-        errorUser = PropertyReader.getProperty("saucedemo.error_user");
-        lockedOutUser = PropertyReader.getProperty("saucedemo.locked_out_user");
-        emptyLoginUser = PropertyReader.getProperty("saucedemo.empty_username");
-        emptyPasswordUser = PropertyReader.getProperty("saucedemo.empty_password");
-        password = PropertyReader.getProperty("saucedemo.password");
     }
 
     @Step("Закрытие браузера")

@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import user.User;
 import user.UserFactory;
 
+import static enums.DepartmentNaming.PRODUCTS;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static pages.ProductsPage.PROBLEM_IMG;
@@ -26,6 +27,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login(UserFactory.withAdminPermission());
         assertTrue(productsPage.isPageOpen(), "Ожидалось наличие заголовка 'Products'");
+        assertEquals(productsPage.getTitleText(), PRODUCTS.getDisplayName());
     }
 
     @DataProvider(name = "invalidUser")
